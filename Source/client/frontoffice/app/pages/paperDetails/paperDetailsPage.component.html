@@ -1,0 +1,41 @@
+<div class="container">
+  
+
+<div class="row" *ngIf="paper">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>{{paper.name}}</h2>
+    </div>
+
+    
+    <span class="input-group-btn">
+        <button type="button" (click)="nextPage()" class="btn btn-default">Next</button>
+        <button type="button" (click)="previousPage()" class="btn btn-default">Previous</button>
+    </span>
+    
+    <img [src]="b64sanitized" class="img-responsive" alt="Image" oncontextmenu="return false;">
+
+    <span class="input-group-btn">
+        <button type="button" (click)="nextPage()" class="btn btn-default">Next</button>
+        <button type="button" (click)="previousPage()" class="btn btn-default">Previous</button>
+    </span>
+    
+</div>
+
+
+
+    <div class="row" *ngIf="!paper">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    Could not get page or paper</h2>
+                <div class="error-details">
+                    Sorry, an error has occured, Requested page not found!
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    
+</div>

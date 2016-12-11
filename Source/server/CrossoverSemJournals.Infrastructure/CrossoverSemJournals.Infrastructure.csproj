@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EA39CDB7-FD61-4C9C-822B-60C8D0EC83D2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CrossoverSemJournals.Infrastructure</RootNamespace>
+    <AssemblyName>CrossoverSemJournals.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IdentityMySQL\UserTable.cs" />
+    <Compile Include="IdentityMySQL\UserStore.cs" />
+    <Compile Include="IdentityMySQL\UserRoleTable.cs" />
+    <Compile Include="IdentityMySQL\UserLoginsTable.cs" />
+    <Compile Include="IdentityMySQL\UserClaimsTable.cs" />
+    <Compile Include="IdentityMySQL\RoleTable.cs" />
+    <Compile Include="IdentityMySQL\RoleStore.cs" />
+    <Compile Include="IdentityMySQL\MySQLDatabase.cs" />
+    <Compile Include="IdentityMySQL\IdentityUser.cs" />
+    <Compile Include="IdentityMySQL\IdentityRole.cs" />
+    <Compile Include="IdentityMySQL\UserManager.cs" />
+    <Compile Include="AutofacInfrastructureModule.cs" />
+    <Compile Include="DataAccess\FNHibernateConfiguration.cs" />
+    <Compile Include="DataAccess\Mapping\BaseEntityMapping.cs" />
+    <Compile Include="DataAccess\Mapping\JournalMapping.cs" />
+    <Compile Include="DataAccess\Mapping\PaperMapping.cs" />
+    <Compile Include="DataAccess\Mapping\UserMapping.cs" />
+    <Compile Include="DataAccess\Mapping\SubscriptionMapping.cs" />
+    <Compile Include="DataAccess\Mapping\PaperPage.cs" />
+    <Compile Include="Services\PaperFileConverter.cs" />
+    <Compile Include="DataAccess\Repositories\JournalsRepository.cs" />
+    <Compile Include="DataAccess\Repositories\PapersRepository.cs" />
+    <Compile Include="DataAccess\Repositories\Repository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IdentityMySQL\" />
+    <Folder Include="Services\" />
+    <Folder Include="DataAccess\" />
+    <Folder Include="DataAccess\Mapping\" />
+    <Folder Include="DataAccess\Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IdentityMySQL\MySQLIdentity.sql" />
+    <None Include="packages.config" />
+    <None Include="app.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrossoverSemJournals.Domain\CrossoverSemJournals.Domain.csproj">
+      <Project>{4C64FCF4-4535-4EEF-A259-4BEF7E3E5B7B}</Project>
+      <Name>CrossoverSemJournals.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

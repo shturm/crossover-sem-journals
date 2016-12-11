@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4C64FCF4-4535-4EEF-A259-4BEF7E3E5B7B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CrossoverSemJournals.Domain</RootNamespace>
+    <AssemblyName>CrossoverSemJournals.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AutofacDomainModule.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Journal.cs" />
+    <Compile Include="Entities\Paper.cs" />
+    <Compile Include="Entities\Subscription.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Services\Interfaces\ISubscriptionService.cs" />
+    <Compile Include="Services\SubscriptionService.cs" />
+    <Compile Include="Services\Interfaces\IJournalService.cs" />
+    <Compile Include="Services\JournalService.cs" />
+    <Compile Include="Infrastructure\IJournalsRepository.cs" />
+    <Compile Include="Entities\Projections\JournalCatalogEntry.cs" />
+    <Compile Include="Entities\Projections\PaperCatalogEntry.cs" />
+    <Compile Include="Infrastructure\IPapersRepository.cs" />
+    <Compile Include="Services\Interfaces\IPaperService.cs" />
+    <Compile Include="Services\PaperService.cs" />
+    <Compile Include="Entities\PaperPage.cs" />
+    <Compile Include="Infrastructure\IPaperFileConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Entities\Projections\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

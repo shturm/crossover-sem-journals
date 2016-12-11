@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+        <form #f="ngForm" (ngSubmit)="register(f.value)">
+            <legend>Register</legend>
+            
+            <div class="alert alert-danger" *ngIf="errorMessage">
+                <strong>Error</strong> {{errorMessage}}
+            </div>
+            
+
+            <div class="form-group form-group-lg">
+                <label for="">Email</label>
+                <input type="email" class="form-control" name="email" ngModel placeholder="email@domain.tld" required>
+            </div>
+
+            <div class="form-group form-group-lg">
+                <label for="">Password</label>
+                <input type="password" class="form-control" name="password" ngModel placeholder="password" required>
+            </div>
+
+            <div class="form-group form-group-lg">
+                <label for="">Repeat Password</label>
+                <input type="password" class="form-control" name="repeatPassword" ngModel placeholder="password" required>
+            </div>
+
+
+           
+            <button type="submit" class="btn btn-success">Submit</button>
+            or <a routerLink="/login">Log in</a>
+        </form>
+
+    </div>
+    
+
+</div>

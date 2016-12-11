@@ -1,0 +1,67 @@
+<div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
+        <form #f="ngForm" (ngSubmit)="submitProduct()">
+
+
+            <label for="name">Journal Name</label>
+            <div class="input-group input-group-lg">
+                <!--<span class="input-group-addon" id="basic-addon1">&nbsp;&nbsp;</span>-->
+                <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1" [(ngModel)]="product.name" name="name"
+                    [disabled]="!editable">
+            </div>
+
+            <label for="price">Journal Price</label>
+            <div class="input-group input-group-lg">
+                <!--<span class="input-group-addon" id="basic-addon1">#</span>-->
+                <input type="number" class="form-control" placeholder="Price" aria-describedby="basic-addon1" [(ngModel)]="product.price"
+                    name="price" [disabled]="!editable">
+            </div>
+
+            <button *ngIf="!product.subscribed" type="button" (click)="subscribe(product)" class="btn btn-large btn-success">Subscribe</button>
+            <span *ngIf="product.subscribed"  class="label label-xs label-success">Subscribed</span>
+            <button *ngIf="product.subscribed" type="button" (click)="unsubscribe(product)" class="btn btn-danger">Unsubscribe</button>
+            
+
+            <div class="btn-group btn-group-lg" role="group" aria-label="..." *ngIf="editable">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="submit" (click)="deleteJournal(product)" class="btn btn-xs btn-danger">Delete</button>
+            </div>
+
+        </form>
+
+     <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Paper</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let paper of papers">
+                    <td>{{paper.name}}</td>
+                    <td>
+                    <button *ngIf="product.subscribed" type="button" (click)="readPaper(paper)" class="btn btn-large btn-block btn-default">Read</button>
+                    </td>
+                    <!--<td><button type="button" (click)="deletePaper(paper)" class="btn btn-xs btn-danger">Delete</button></td>-->
+                </tr>
+            </tbody>
+        </table>       
+    </div>
+
+    
+    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-3">
+   
+
+
+        <form *ngIf="editable" class="form-inline" method="POST" action="/" role="form" #paperForm="ngForm" (ngSubmit)="submitNewPaper(paperForm.value)">
+            <legend>New Paper</legend>
+            <div class="form-group">
+                <input type="file" class="form-control" name="paperFile" accept=".pdf" required [(ngModel)]="newPaper.file" (change)="onFileChange($event)">
+                <input type="text" class="form-control" name="paperTitle" placeholder="Title" required [(ngModel)]="newPaper.name">
+            </div>
+            <button type="submit" class="btn btn-success">Upload Paper</button>
+        </form>
+    </div>
+    
+</div>

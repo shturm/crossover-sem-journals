@@ -1,0 +1,32 @@
+<h3 *ngIf="searchTerm">Search for: "{{searchTerm}}"</h3>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of products">
+                        <td>{{p.name}}</td>
+                        <td>{{p.price}}</td>
+                        <td>
+                            <!--<button type="button" (click)="deleteProduct(p)" class="btn btn-success">Subscribe</button>-->
+                            
+                            <!--<span class="label label-success">subscribed</span>-->
+                            
+                            <!--<button type="button" (click)="gotoProduct(p.sku)" class="btn btn-default">Details</button>-->
+                            <button type="button" (click)="gotoProduct(p.id)" class="btn btn-default">Details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
